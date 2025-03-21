@@ -1,0 +1,17 @@
+Click Transform Data ➜ Open Power Query Editor.
+
+Remove Other Columns (Profit Only):
+In Orders table, select Profit column ➜ Right-click ➜ Remove Other Columns.
+
+Calculate Line Total (Order_Details):
+Go to Order_Details ➜ Add Column ➜ Custom Column.
+Name it Line Total ➜ Formula:
+[UnitPrice] * [Quantity]
+
+Rename & Reorder Columns:
+Right-click columns ➜ Rename (e.g., OrderID ➜ Order ID).
+Drag columns to reorder as needed.
+
+Combine Returns and Total Sales Queries:
+Merge Queries as New ➜ Join Orders (Total Sales) with Returns on Order ID.
+Choose Left Outer Join ➜ Expand Return fields.
