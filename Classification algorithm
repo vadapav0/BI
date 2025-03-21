@@ -1,15 +1,7 @@
-library(rpart)
-library(rpart.plot)
-library(caret)
-data(iris)
+rainfall <- c(799, 1174.8, 865.1, 1334.6, 635.4, 198.5, 685.5, 998.6, 784.2, 985, 882.8, 1071)
+rainfall.timeseries <- ts(rainfall, start = c(2012, 1), frequency = 12)
+print(rainfall.timeseries)
 
-set.seed(123)  # For reproducibility
-index <- sample(1:nrow(iris), 0.8 * nrow(iris))
-train_data <- iris[index, ]
-test_data <- iris[-index, ]
-
-model <- rpart(Species ~ ., data = train_data, method = "class")
-predictions <- predict(model, test_data, type = "class")
-conf_matrix <- confusionMatrix(predictions, test_data$Species)
-print(conf_matrix)
-rpart.plot(model, main = "Decision Tree for Classification", type = 3, extra = 101)
+png(file = "rainfall.png")
+plot(rainfall.timeseries)
+dev.off()
