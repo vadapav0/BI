@@ -1,13 +1,24 @@
 library(rpart)
 library(rpart.plot)
-data(iris)
-set.seed(123)  # For reproducibility
-train_index <- sample(1:nrow(iris), 0.7 * nrow(iris))
-train_data <- iris[train_index, ]
-test_data <- iris[-train_index, ]
-decision_tree <- rpart(Species ~ ., data = train_data, method = "class")
-rpart.plot(decision_tree, type = 3, extra = 101, box.palette = "Blues")
-predictions <- predict(decision_tree, test_data, type = "class")
-accuracy <- sum(predictions == test_data$Species) / nrow(test_data)
-print(paste("Model Accuracy:", round(accuracy * 100, 2), "%"))
-table(Predicted = predictions, Actual = test_data$Species)
+library(e1071)
+library(caret)
+library(ggplot2)
+library(recipes)
+
+data <- read.csv("C:\\Users\\LENOVO\\Downloads\\BANK LOAN.csv")
+data$default <- as.factor(data$DEFAULTER)
+str(data)
+
+set.seed(42)
+splitIndex <- createDataPartition(data$DEFAULTER, p = 0.8, list=FALSE)
+traindata <- data[splitIndex, ]
+testdata <- data[-splitIndex, ]
+
+table(traindata$DEFAULTER)
+table(testdata$DEFAULTER)
+
+dt_model <- rpart(default ~ ., data=traindata, method="class")
+
+png("D:\\BI\\Trial123.jpeg", width=800, height=600)
+rpart.plot(dt_model, main="Decision Tree Chart", cex=1)
+dev.off()
