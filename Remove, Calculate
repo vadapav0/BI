@@ -7,6 +7,7 @@ Calculate Line Total (Order_Details):
 Go to Order_Details ➜ Add Column ➜ Custom Column.
 Name it Line Total ➜ Formula:
 [UnitPrice] * [Quantity]
+(unitPrice = Sales / Qauntity)
 
 Rename & Reorder Columns:
 Right-click columns ➜ Rename (e.g., OrderID ➜ Order ID).
