@@ -1,0 +1,10 @@
+library(forecast)
+data("AirPassengers")
+ts_data <- ts(AirPassengers, start = c(1949, 1), frequency = 12)
+plot(ts_data, main = "Air Passengers Data", ylab = "Number of Passengers", col = "blue")
+decomposed_ts <- decompose(ts_data)
+plot(decomposed_ts)
+arima_model <- auto.arima(ts_data)|
+forecast_values <- forecast(arima_model, h = 12)
+plot(forecast_values, main = "Air Passengers Forecast", col = "red")
+print(forecast_values)
