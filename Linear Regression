@@ -1,0 +1,11 @@
+library(ggplot2)
+data(mtcars)
+head(mtcars)
+model <- lm(mpg ~ hp, data = mtcars)
+summary(model)
+new_data <- data.frame(hp = c(100, 150, 200))
+predictions <- predict(model, new_data)
+print(predictions)
+ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(color = "blue") + geom_smooth(method = "lm", col ="green") + labs(title = "Linear Regression: MPG vs Horsepower",
+       x = "Horsepower (hp)",
+       y = "Miles Per Gallon (mpg)")
