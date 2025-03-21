@@ -1,0 +1,13 @@
+library(rpart)
+library(rpart.plot)
+data(iris)
+set.seed(123)  # For reproducibility
+train_index <- sample(1:nrow(iris), 0.7 * nrow(iris))
+train_data <- iris[train_index, ]
+test_data <- iris[-train_index, ]
+decision_tree <- rpart(Species ~ ., data = train_data, method = "class")
+rpart.plot(decision_tree, type = 3, extra = 101, box.palette = "Blues")
+predictions <- predict(decision_tree, test_data, type = "class")
+accuracy <- sum(predictions == test_data$Species) / nrow(test_data)
+print(paste("Model Accuracy:", round(accuracy * 100, 2), "%"))
+table(Predicted = predictions, Actual = test_data$Species)
