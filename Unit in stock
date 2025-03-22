@@ -1,0 +1,22 @@
+Number.Round(Number.RandomBetween(50, 500))
+
+
+
+
+Line-----
+Sum of Sales by year:
+x-axis: Date
+y-axis: Sum of Sales
+
+Bar------
+Product and Total Sales by Year
+x-axis: Product
+y-axis: unit in stock
+
+region and Total Sales by Year
+x-axis: Region
+y-axis: unit in stock
+
+Category and Total Sales by Year
+x-axis: Category
+y-axis: unit in stock
