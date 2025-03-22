@@ -1,0 +1,15 @@
+Number.Round(Number.RandomBetween(50, 500))
+
+
+Matrix:
+rows: Region
+Column: Year
+Values: unit in stock & sales
+
+Table: 
+region, date ,unit in stock ,sales
+
+Pie:
+Legend: region
+Values: unit in stock
+Tooltips:sales
